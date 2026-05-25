@@ -31,7 +31,7 @@ The assignments cover the full spectrum of supervised and unsupervised learning,
 ├── association_rules.R               # Association Rules — Apriori (R)
 ├── decision_tree.py         # Decision Tree + Naive Bayes (Python)
 ├── clustering.py         # K-Means + Hierarchical Clustering (Python)
-└── 3rd_Assignment_Report.pdf  # Full written report with results and analysis
+
 ```
 
 ---
