@@ -1,0 +1,136 @@
+# Big Data Analysis — MSc Assignments
+**MSc in Applied Economics and Data Analysis**  
+School of Economics and Business Administration, Department of Economics
+
+---
+
+## Overview
+
+The assignments cover the full spectrum of supervised and unsupervised learning, from classification and clustering to association rule mining.
+
+---
+
+## Topics Covered
+
+| Topic | Techniques | Tools |
+|-------|-----------|-------|
+| Bayesian Classification (Literature Review) | Naïve Bayes, ROC/AUC analysis | — |
+| Decision Tree Classification | Decision Trees, Confusion Matrix, Entropy Gain | R, Python |
+| Naïve Bayes Classification | Bernoulli Naïve Bayes | Python |
+| Clustering — Movie Recommendation | K-Means, Elbow Method | R, Python |
+| Clustering — European Countries | Hierarchical Clustering, Dendrogram | R, Python |
+| Association Rule Mining | Apriori Algorithm, Support, Confidence, Lift | R |
+
+---
+
+## Repository Structure
+
+```
+├── decision_tree.R               # Decision Tree + Entropy Gain (R)
+├── clustering.R               # K-Means & Hierarchical Clustering (R)
+├── association_rules.R               # Association Rules — Apriori (R)
+├── decision_tree.py         # Decision Tree + Naive Bayes (Python)
+├── clustering.py         # K-Means + Hierarchical Clustering (Python)
+└── 3rd_Assignment_Report.pdf  # Full written report with results and analysis
+```
+
+---
+
+## Assignment Details
+
+### 1. Literature Review — Bayesian Classification
+Analysis and comparison of two academic papers:
+- **Loan Risk Assessment** (Tunisian commercial bank): Naïve Bayes for credit default prediction, achieving 58.66% classification accuracy with ROC/AUC evaluation.
+- **Recession Forecasting** (Federal Reserve Bank of Kansas): Naïve Bayes vs. Markov-switching models for macroeconomic recession prediction.
+
+**Key insight:** Naïve Bayes converges faster to its error rate than logistic regression, making it more effective with limited data.
+
+---
+
+### 2. Decision Tree — Mushroom Classification
+**Dataset:** UCI Mushroom Dataset (edible vs. poisonous species)
+
+- Built a **Decision Tree** classifier in R (`rpart`) and Python (`sklearn`)
+- Applied **One-Hot Encoding** for categorical variables in Python
+- Evaluated model performance using a **Confusion Matrix**
+- **Achieved 99.26% accuracy** on the test set
+- Manually calculated **Entropy Gain** for the "habitat" attribute (first 30 observations)
+
+```
+Confusion Matrix Results:
+  Predicted Edible  | Predicted Poisonous
+  ------------------|--------------------
+  True Edible:  866 | 12
+  True Poisonous: 0 | 747
+
+Accuracy: 99.26% | Error Rate: 0.74%
+```
+
+---
+
+### 3. Naïve Bayes — Mushroom Classification (Python)
+- Used **BernoulliNB** from `sklearn` on the same mushroom dataset
+- Compared performance against the Decision Tree model
+- Pre-processed data using One-Hot Encoding
+
+---
+
+### 4. Clustering — Movie Recommendation System
+**Dataset:** MovieLens dataset (movies + user ratings)
+
+- Applied the **Elbow Method** (K=2 to 100) to determine the optimal number of clusters
+- Chose **K=15 clusters** as the optimal value
+- Built a **K-Means** recommendation engine (R) and **K-Modes** (Python, suitable for categorical data)
+- Generated recommendations for a specific user (User ID: 198) by filtering clusters with mean rating ≥ 3.5
+
+---
+
+### 5. Hierarchical Clustering — European Countries
+**Dataset:** European countries with socio-economic indicators (GDP, Inflation, Life Expectancy, etc.)
+
+- Applied **Min-Max normalization** before clustering
+- Used **Agglomerative Hierarchical Clustering** with **Complete Linkage**
+- Visualized results using a **Dendrogram**
+- Implemented in both R and Python (`scipy.cluster.hierarchy`)
+
+---
+
+### 6. Association Rules — Male Fertility Analysis
+**Dataset:** Fertility Diagnosis dataset
+
+- Applied the **Apriori Algorithm** to discover association rules
+- Parameters: minimum support = 2%, minimum confidence = 100%, minimum rule length = 2 items
+- Filtered rules to show only those predicting altered fertility output (`output=O`)
+- Removed redundant rules and sorted by **Lift** score
+
+---
+
+## Technologies & Libraries
+
+### Python
+- `pandas`, `numpy` — Data manipulation
+- `matplotlib` — Visualization
+- `scikit-learn` — Decision Tree, Naïve Bayes, Hierarchical Clustering, preprocessing
+- `kmodes` — K-Modes clustering for categorical data
+- `scipy` — Hierarchical clustering and dendrogram plotting
+
+### R
+- `rpart`, `rpart.plot`, `rattle` — Decision Trees
+- `e1071` — Naïve Bayes
+- `amap`, `MASS`, `klaR` — Clustering utilities
+- `arules` — Association rule mining (Apriori)
+- `ggplot2` — Visualization
+
+---
+
+## Key Skills Demonstrated
+
+- **Supervised Learning:** Decision Trees, Naïve Bayes classification
+- **Unsupervised Learning:** K-Means, K-Modes, Hierarchical Clustering
+- **Data Preprocessing:** One-Hot Encoding, Min-Max normalization, handling missing values
+- **Model Evaluation:** Confusion Matrix, Accuracy, Error Rate, ROC/AUC
+- **Association Mining:** Apriori algorithm, Support, Confidence, Lift
+- **Dual-language implementation:** Same analyses reproduced in both R and Python
+- **Statistical interpretation:** Entropy, Information Gain, Cluster evaluation
+
+---
