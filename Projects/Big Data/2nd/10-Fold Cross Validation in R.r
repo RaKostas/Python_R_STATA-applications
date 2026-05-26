@@ -1,69 +1,69 @@
 setwd("C:\\Users\\user\\Desktop")
-# Διασταυρωμένη Επικύρωση k-Πτυχών
-# Επιστρέφει το Μέσο Τετραγωνικό Σφάλμα πρόβλεψης
+
+# k-Fold Cross Validation
+# Returns the Root Mean Squared Prediction Error
 calculateRMSE<-function(predictedValues, actualValues){
   err<- sqrt( mean((actualValues - predictedValues)^2)  )
   return( err )
 }
 
-# Η συνάρτηση επιστρέφει τον μέσο όρο του μέσου τετραγωνικού σφάλματος
+# The function returns the average of the mean squared error
 kFoldCrossValidation<-function(data, frml, k){
-  # Τυχαία αναφιάταξη των παρατηρήσεων του συνόλου δεδομένων
+  # Random shuffle of observations in the dataset
   dataset<-data[sample(nrow(data)),]
-  #Δημιουργία k σε πλήθος τμημάτων του συνόλου δεδομένων με περίπου ίσο πλήθος 
-  # παρατηρήσεων σε κάθε τμήμα.
+  # Create k folds of approximately equal size
   folds <- cut(seq(1,nrow(dataset)), breaks=k, labels=FALSE)
-  # Διάνυσμα όπου αποθηκεύεται το Μέσο Τε
+   # Vector to store RMSE values
   RMSE<-vector()
-  # Η διαδικασία θα τερματίσει εάν όλα τα τμήματα έχουν χρησιμοποιηθεί ως σύνολο σλέγχου.
+  # The process stops when all folds have been used as test sets
   for(i in 1:k){
-    # Καθορισμός του τμήματος ελέγχου για την τρέχουσα επανάληψη 
+
+    # Define the test set for the current iteration
     testIndexes <- which(folds==i,arr.ind=TRUE)
-    # Καθορισμός συνόλου ελέγχου μοντέλου
+    # Define test dataset
     testData <- dataset[testIndexes, ]
-    # Καθορισμός συνόλου εκπαίδευσης μοντέλου, που θα είναι όλα τα υπόλοιπα
-    # πλην των δεδομένων που χρησιμοποιηθούν για έλεγχο
+    # Define training dataset (everything except the test set)
     trainData <- dataset[-testIndexes, ]
-    # Εκτίμηση συντελεστών του μοντέλου παλινδρόμησης χρησιμοποιώντας το σύνολο εκπαίδευσης
+    # Estimate regression model coefficients using training data
     candidate.linear.model<-lm( frml, data = trainData)
-    # Υπολογισμός των τιμών της εξαρτημένης μεταβλητής που προβλέπει το μοντέλο 
-    # για τις τιμές του τρέχοντος συνόλου ελέγχου 
+    # Predict dependent variable values for the test set
     predicted<-predict(candidate.linear.model, testData)
-    # Υπολογισμός σφάλματος RMSE
+    # Calculate RMSE error
     error<-calculateRMSE(predicted, testData[, "area"])
-    # Αποθήκευση τιμής σφάλματος
+    # Store error value
     RMSE<-c(RMSE, error)
   }
   
-  # Επιστροφή μέσης τιμής των σφαλμάτων που προέκυψαν απ'όλα τα τμήμα-τα ελέγχου
+  # Return the average error across all folds
   return( mean(RMSE) )
 }
+
 #ii)
-# Dataset με γεωγραφικά και μετεωρολογικά σοιχεια για πυρκαγιές που εκδηλώθηκαν στην Πορτογαλία
+
+# Dataset with geographical and meteorological data for forest fires in Portugal
 forestfires<-read.csv("forestfires.csv", sep=",", header=T,stringsAsFactors = F, quote = "\"")
 
 
-# Έλεγχος για δεδομένα που λείπουν (missing values) και αφαίρεση ολόκληρης γραμμής
-# σε περίπτωση που μια τουλάχιστον μεταβλητή έχει missing value
+# Check for missing values and remove rows that contain any missing value
 forestfires<-na.omit(forestfires)
 
-# Τα  υποψήφια μοντέλα των οποίων θα αξιολογηθεί η ικανότητα πρόβλεψης της 
-#επιφάνειας που θα καεί βάσει των μετεωρολογικών συνθηκών που επικρατούν με τη μέθοδο της 
-#διασταυρωτικής επικύρωσης 10-φορές. 
-#area=β1temp +β2wind+β3rain +βο
-# Τα μοντέλα παλινδρόμησης αποθηκεύονται στο διάνυσμα ως συμβολοσειρά και θα μετατραπούν
-# σε τύπο (formula) της R
+
+# Candidate models to evaluate the prediction of burned area
+# based on weather conditions using 10-fold cross-validation
+# area = β1*temp + β2*wind + β3*rain + β0
+
+# Regression models stored as strings and converted to R formulas
 predictionModels<-vector()
 predictionModels[1]<-"area ~ temp+wind+rain"
 forestfires2<-forestfires[which(forestfires$area<3.2),]
 forestfires2<-na.omit(forestfires2)
 predictionModels[2]<-"area ~ temp+wind+rain"
-# Μετά από κάθε διασταυρωμένη επικύρωση, ο μέσος όρος του μέσου τετραγωνικού 
-# σφάλματος κάθε μοντέλου θα αποθηκευτεί σε διάνυσμα.
+
+# After each cross-validation, the average RMSE of each model is stored
+
 modelMeanRMSE<-vector()
 modelMeanRMSE2<-vector()
-#Διασταυρωμένη επικύρωση 10-φορές για κάθε ένα από τα 
-# δύο υποψήφια μοντέλα.
+# Perform 10-fold cross-validation for each candidate model
 for (k in 1:length(predictionModels[1])){
   # Δισταυρωμένη επικύρωση 10-πτυχών για το γραμμικό μοντέλο παλινδρόμησης k
   modelErr<-kFoldCrossValidation(forestfires,as.formula(predictionModels[k]), 10)
@@ -73,20 +73,26 @@ for (k in 1:length(predictionModels[1])){
 }
 
 for (k in 1:length(predictionModels[2])){
-  # Δισταυρωμένη επικύρωση 10-πτυχών για το γραμμικό μοντέλο παλινδρόμησης k
+
+  # 10-fold cross-validation for linear regression model k
   modelErr2<-kFoldCrossValidation(forestfires2, as.formula(predictionModels[k]), 10)
-  #Αποθήκευση του μέσου σφάλματος
+
+  # Store average error
   modelMeanRMSE2<-c(modelMeanRMSE2, modelErr2)
   print( sprintf("Linear regression model [%s]: prediction error [%f]", predictionModels[k], modelErr2 ) )
 }
-#μέσο τετραγωνικό σφάλμα των δυο μοντέλων
+
+# Combine RMSE of both models
 all<-c(modelMeanRMSE,modelMeanRMSE2)
-# Ποιο μοντέλο είχε το χαμηλότερο μέσο τετραγωνικό σφλάμα;
+
+# Which model had the lowest RMSE?
 bestModelIndex<-which( modelMeanRMSE == min(modelMeanRMSE) )
-# Εμφάνιση μοντέλου με το μικρότερο μέσο τετραγωνικό σφάμα δηλαδή τη μεγαλύτερη ακρίβεια
+
+# Display the model with the lowest RMSE (highest accuracy)
 print( sprintf("Model with best accuracy was: [%s] error: [%f]", predictionModels[bestModelIndex], all[bestModelIndex]) )
-# Tα μοντέλα παλινδρόμηνσης με το  μέσο τετραγωνικό σφάλμα χρησιμοποιώντας την μέθοδο OLS,όπου
-#εκτιμώνται οι συντελεστές του λαμβάνοντας υπόψη ολόκληρο το σύνολο δεδομένων ως σύνολο εκπαίδευσης
+
+# Regression models evaluated using RMSE with OLS,
+# where coefficients are estimated using the entire dataset as training data
 final.linear.model<-lm( as.formula(predictionModels[bestModelIndex]), data=forestfires )
 final.linear.model
 final.linear.model<-lm( as.formula(predictionModels[bestModelIndex]), data=forestfires2 )
