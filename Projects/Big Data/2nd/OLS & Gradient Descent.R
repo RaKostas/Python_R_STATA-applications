@@ -1,0 +1,74 @@
+setwd("C:\\Users\\user\\Desktop")
+foodConsumptionData<-read.csv("HouseholdData.csv ", sep=",", header=T)
+# using R's  lm() which uses the OLS method (Ordinary Least Squares).
+# First argument is special data type in R called a formula 
+# which specifies the linear model to be estimated. It contains the variables a data.frame
+# with the dependent variable specified to the left of the special character ~ .
+
+
+# Estimation of the multiple linear regression model
+# FoodExpenditure  = β1Income + β1FamilySize + β0
+linear.regression.model <-  linear.regression.model<-lm(FoodExpenditure ~ Income+FamilySize, data=foodConsumptionData)
+
+# Show results
+summary(linear.regression.model)
+
+#Show/print estimated coefficients only
+print( linear.regression.model$coefficients )
+
+#Gradient Descent 
+
+# calculateCost
+
+calculateCost<-function(X, y, theta){
+  
+  m <- length(y)
+  return( sum((X%*%theta- y)^2) / (2*m) )
+} # calculateCost
+# gradientDescent
+
+gradientDescent<-function(X, y, theta, alpha=0.01, numIters=90){
+  
+  m <- length(y)
+  
+  
+  costHistory <- rep(0, numIters)
+  
+  
+  for(i in 1:numIters){
+    
+    
+    
+    
+    theta <- theta - alpha*(1/m)*(t(X)%*%(X%*%theta - y))
+    
+    
+    costHistory[i]  <- calculateCost(X, y, theta)
+    
+  } 
+  
+  
+  
+  gdResults<-list("coefficients"=theta, "costs"=costHistory)
+  return(gdResults)
+} # gradientDescent
+HouseholdData<-read.csv("HouseholdData.csv ", sep=",", header=T)
+revenue<- HouseholdData[, 2]
+
+
+indVariables<- cbind( rep(1, 35), HouseholdData[, 3], HouseholdData[, 4]) 
+
+
+
+
+initialThetas<-rep(runif(1), 3) 
+
+
+
+gdOutput<-gradientDescent(indVariables, revenue, initialThetas, 0.0000000000001,80000)
+
+
+print(gdOutput$coefficients)
+
+#plot
+plot(gdOutput$costs, xlab="Iterations", ylab="J(θ)" )
