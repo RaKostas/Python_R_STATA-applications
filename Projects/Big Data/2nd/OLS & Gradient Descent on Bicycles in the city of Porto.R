@@ -56,15 +56,20 @@ gradientDescent<-function(X, y, theta, alpha=0.01, numIters=90){
 Dataday<-read.csv("day.csv", sep=",", header=T)
 
 
-#Αριθμός παρατηρήσεων
+
+# Number of observations
 numObs<-nrow(Dataday)
-#Εξαρτημένη μεταβλητή
+
+# Dependent variable
 dependentvariable<-Dataday$cnt
-#Ανεξάρτητες μεταβλητές
+
+# Independent variables
 indVariables<- cbind( rep(1, numObs), Dataday[, 9], Dataday[, 10],Dataday[,12],Dataday[,13])
-#παράμετρος μάθησης α
+
+# Learning rate α
 alpha=0.001
-#αριθμός επαναλήψεων
+
+# Number of iterations
 numIterations=15000
 
 initialThetas<-rep(runif(1),5) 
