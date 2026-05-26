@@ -1,12 +1,35 @@
+/*===========================================================================
+  PROJECT:  Probit, Logit, Ordered Probit & Multinomial Logit
+  COURSE:   Applied Microeconometrics — MSc Applied Economics & Data Analysis
+  DATE:     2020
+  DATA:     Labour Force Survey (LFS), Greece, Q2 2020
+            Source: Hellenic Statistical Authority (ELSTAT)
+            https://www.statistics.gr/el/public-use-files
+
+  DESCRIPTION:
+  This script analyses Greek LFS microdata across three questions:
+    Question A — Women's labour market participation (OLS, Probit, Logit)
+    Question B — Employment status for all (Multinomial Logit)
+    Question C — Wage scale determinants (Ordered Probit)
+  All non-linear models are reported as marginal effects (dydx).
+===========================================================================*
+
 clear
 set more off, perm
-* import LFS_2020B_users.csv
-import delimited "C:\Users\Κωστας\Desktop\micro\LFS_2020B_users.csv", delimiter(";") clear
+
+* Load data  (LFS_2020B_users.csv)
+import delimited "LFS_2020B_users.csv", delimiter(";") clear
+
+* Restrict to working-age population (25–54)
 keep if age>=25 & age<=54
 
-*QUESTION 1
-**Generate new variables**
-*Gender (0/1)*
+
+/*---------------------------------------------------------------------------
+  SECTION 1: VARIABLE CONSTRUCTION
+  All binary (0/1) indicators are constructed from raw LFS codes.
+  See the report's Table 1 for full variable definitions.
+---------------------------------------------------------------------------*/
+*Sex (0 = Male, 1 = Female)*
 gen sex=.
 replace sex=0 if a07==1 //male
 replace sex=1 if a07==2 //female
@@ -72,9 +95,21 @@ replace wage_scale = 10 if (e95 >=2500 & e95<9999) | (e95a==10)
 
 *********************************************************************************************
 
-*Question A
+/*---------------------------------------------------------------------------
+  SECTION 2: QUESTION A — WOMEN'S LABOUR MARKET PARTICIPATION
+  Dependent variable: katapfemale (1 = economically active, 0 = inactive)
+  Sample: Women only
+  Methods: OLS (Linear Probability Model), Probit, Logit
+  All coefficients reported as marginal effects for comparability.
 
-tab katap // Κατάστση Απασχόλησης (1 Απασχολούμενος 2 Άνεργος 3 Μη Οικονομικά Ενεργός)
+  Note: For binary outcomes, Probit and Logit are theoretically correct.
+  OLS (Linear Probability Model) is included for comparison only —
+  it can produce predicted probabilities outside [0,1].
+---------------------------------------------------------------------------*/
+
+
+* Current employment status: 1=Employed 2=Unemployed 3=Not economically active
+tab katap 
 
 tab katap if sex==1
 
@@ -113,9 +148,17 @@ outreg2 [Model1 Model2 Model3] using "Table 2a", title (Marginal Effects) replac
 
 
 ********************************************************************************************************************
-*Question B
+/*---------------------------------------------------------------------------
+  SECTION 3: QUESTION B — EMPLOYMENT STATUS (MULTINOMIAL LOGIT)
+  Dependent variable: katap (1=Employed, 2=Unemployed, 3=Not economically active)
+  Sample: Full population aged 25–54
+  Method: Multinomial Logit with marginal effects per outcome
 
-*Multinominal Logit*
+  Multinomial Logit is appropriate here because the outcome has three
+  unordered categories. Marginal effects are computed separately for
+  each outcome to show direction and magnitude per group.
+---------------------------------------------------------------------------*/
+
 
 destring katap,replace
 
@@ -137,7 +180,26 @@ outreg2 [Model111 Model222 Model333] using "Table 3", title (Marginal Effects) r
 
 
 ***********************************************************************************************
-*Question C
+/*---------------------------------------------------------------------------
+  SECTION 4: QUESTION C — WAGE SCALE DETERMINANTS (ORDERED PROBIT)
+  Dependent variable: wage_scale (10 ordered wage brackets)
+  Method: Ordered Probit with marginal effects per wage outcome
+
+  Ordered Probit is appropriate because wage_scale is ordinal (ordered
+  categories) rather than a continuous or unordered variable.
+
+  Sample restrictions applied before estimation:
+    1. Currently employed worker (not self-employed or family worker)
+    2. Full-time employment
+    3. Working ≥ 5 days per week
+    4. Working ≥ 35 hours per week
+    5. Valid employment category (1–9, excluding missing)
+    6. Not working in agriculture
+    7. Wage data available (non-zero)
+---------------------------------------------------------------------------*/
+
+
+* --- Construct filter variables ---
 
 *(1)employed worker*
 destring e17_r3, replace
