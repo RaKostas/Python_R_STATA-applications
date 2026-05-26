@@ -1,8 +1,13 @@
+* Mincer's Earnings Function — Applied Microeconometrics*
+*Data: Women aged 30–54, cross-section 1975*
+
+
+
 *keep wanted variables and their sum*
 keep age wage exper educ 
 sum wage educ exper
 
-*select a specif range of the sample and the sum*
+*select a specific range of the sample and the sum*
 keep if age>=30 & age<=54
 keep if wage>=.1282 & wage<=25
 sum wage educ exper
@@ -17,7 +22,7 @@ kdensity log_wage
 kdensity wage
 
 
-*scater plots*
+*scatter plots*
 tw (scatter wage educ) (lfit wage educ)
 tw (scatter wage exper) (lfit wage exper)
 
@@ -35,8 +40,8 @@ est store Model1
 reg log_wage educ exper exp2,rob
 est store Model2
 
-outreg2 [Model1] using "Table 1",replace tex word nocons label dec(3)
-outreg2 [Model2] using "Table 2",replace tex word nocons label dec(3)
+outreg2 [Model1] using "Table 1", replace tex word nocons label dec(3)
+outreg2 [Model2] using "Table 2", replace tex word nocons label dec(3)
 
 *matrix plots*
 graph matrix log_wage educ exper exp2
