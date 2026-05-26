@@ -84,19 +84,19 @@ A log transformation is applied to the wage variable before regression. This is 
 
 ### Scatter Plot: Wage and Log Wage vs Education
 
-![Scatter wage vs education](images/scatter_wage_logewage_vs_educ.png)
+![Scatter wage vs education](images/Scatter%20wage%20vs%20education.png)
 
 The blue dots (raw wage) show high variance at upper education levels. The red dots (log wage) are more evenly spread, confirming the stabilising effect of the transformation.
 
 ### Kernel Density: Raw Wage (right-skewed)
 
-![Kernel density wage](images/kdensity_wage.png)
+![Kernel density wage](images/Kernel%20density%20wage.png)
 
 The distribution is heavily right-skewed — most observations cluster around $2–$5/hr with a long tail toward high earners.
 
 ### Kernel Density: Log Wage (approximately normal)
 
-![Kernel density log wage](images/kdensity_logwage.png)
+![Kernel density log wage](images/Kernel%20density%20log%20wage.png)
 
 After transformation, the distribution is approximately bell-shaped and symmetric — suitable for OLS regression.
 
