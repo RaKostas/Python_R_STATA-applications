@@ -1,8 +1,9 @@
 library(dplyr)
 library(readxl)
 library(Benchmarking)
-setwd("C:\\Users\\User\\Desktop")
-data<-read_excel("2nd Assignment.xlsx")
+#Setup our environment. Where is our data
+setwd("C:\\Users\\...)
+data<-read_excel("DEA_Project.xlsx")
 energy<-data[,4]
 labor<-data[,5]
 GFCF<-data[,6]
