@@ -1,6 +1,5 @@
  clear all
 set more off, perm
-cd "C:\Users\Κωστας\Desktop\micro\6"
 
 
 wbopendata, indicator(SL.UEM.TOTL.ZS; ny.gdp.pcap.pp.kd; SE.TER.ENRR.FE; SE.SEC.ENRR.FE; SL.TLF.ACTI.FE.ZS; SP.DYN.TFRT.IN; SP.POP.2024.FE.5Y; SP.POP.2529.FE.5Y ; SP.POP.3034.FE.5Y; SP.POP.3539.FE.5Y; SP.POP.4044.FE.5Y; SP.POP.4549.FE.5Y;SP.POP.5054.FE.5Y; SP.POP.5559.FE.5Y; SP.POP.6064.FE.5Y; SP.POP.6569.FE.5Y; SP.POP.7074.FE.5Y; SP.POP.7579.FE.5Y; SP.POP.80UP.FE.5Y) clear nometadata long
