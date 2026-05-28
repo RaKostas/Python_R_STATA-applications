@@ -1,4 +1,4 @@
-setwd("C:\\Users\\user\\Desktop")
+
 foodConsumptionData<-read.csv("HouseholdData.csv ", sep=",", header=T)
 # using R's  lm() which uses the OLS method (Ordinary Least Squares).
 # First argument is special data type in R called a formula 
