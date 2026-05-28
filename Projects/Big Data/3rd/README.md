@@ -176,19 +176,7 @@ The filtered rule set contains deterministic rules (confidence=100%) — meaning
 - `arules` — Apriori association rule mining
 - `ggplot2` — Visualisation
 
----
 
-## Key Skills Demonstrated
-
-- **Supervised Learning:** Decision Trees, Naïve Bayes classification
-- **Unsupervised Learning:** K-Means, K-Modes, Hierarchical Clustering
-- **Data Preprocessing:** One-Hot Encoding, Min-Max normalisation, missing value handling
-- **Model Evaluation:** Confusion Matrix, Accuracy, Error Rate, ROC/AUC, Entropy Gain
-- **Association Mining:** Apriori algorithm, Support, Confidence, Lift, redundancy filtering
-- **Dual-language implementation:** All analyses reproduced in both R and Python
-- **Statistical interpretation:** Results explained in the context of the domain (finance, ecology, film, public health)
-
----
 
 
 ## License
