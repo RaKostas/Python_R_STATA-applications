@@ -10,8 +10,10 @@ library(MASS)
 library(klaR)
 library(plyr)
 
-#Set our working directory
-setwd("C:\\Users\\USER\\Desktop")
+
+#Setup our environment. Where is our data
+setwd("C:\\Users\\...)
+
 
 # QUESTION 1 
 # Read csv files: movies and ratings
