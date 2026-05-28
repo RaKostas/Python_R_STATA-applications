@@ -1,6 +1,8 @@
 graphics.off() ; rm(list = ls(all = TRUE)) ; cat("\014");
 
-setwd("C:\\Users\\USER\\Desktop")
+
+#Setup our environment. Where is our data
+setwd("C:\\Users\\...)
 
 
 library(rpart)
