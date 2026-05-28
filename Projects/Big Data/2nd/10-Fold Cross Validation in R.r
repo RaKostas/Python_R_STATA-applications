@@ -1,4 +1,4 @@
-setwd("C:\\Users\\user\\Desktop")
+
 
 # k-Fold Cross Validation
 # Returns the Root Mean Squared Prediction Error
