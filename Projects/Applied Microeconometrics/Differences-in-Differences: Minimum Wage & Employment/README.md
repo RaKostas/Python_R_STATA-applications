@@ -155,15 +155,6 @@ The four cells of the DiD table map to:
 
 ---
 
-
-
----
-
-## Author
-
-Konstantinos Rampavilas — AM 1088687  
-Department of Economics, University of Patras
-
 ---
 
 ## License
