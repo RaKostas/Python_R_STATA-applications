@@ -5,8 +5,8 @@ library(readxl)
 library(bitops)
 library(RCurl)
 
-#Setup our environment. Where is our data?
-setwd("C:\\Users\\USER\\Desktop")
+#Setup our environment. Where is our data
+setwd("C:\\Users\\...)
 
 
 
