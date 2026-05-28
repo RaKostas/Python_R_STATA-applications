@@ -1,4 +1,3 @@
-setwd("C:\\Users\\user\\Desktop")
 Dataday<-read.csv("day.csv", sep=",", header=T)
 Dataday<-na.omit(Dataday)
 str(Dataday)
