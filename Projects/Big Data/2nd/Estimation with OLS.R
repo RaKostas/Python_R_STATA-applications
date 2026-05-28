@@ -1,4 +1,4 @@
-setwd("C:\\Users\\user\\Desktop")
+
 communitiesdata<-read.csv("communities.csv ", sep=",", header=F)
 
 
