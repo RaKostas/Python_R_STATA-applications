@@ -10,7 +10,7 @@ library(pastecs)
 library(ggpubr)
 library(lmtest)
 
-industries <- read_excel("C:\\Users\\Κωστας\\Desktop\\koynetas\\μεγαλη εργασια\\industries.xls")
+industries <- read_excel("C:\\Users\\...\\industries.xls")
 
 View(industries)
 
@@ -142,8 +142,7 @@ cat("\014")
 
 
 #####################################################################################
-
-industries <- read_excel("C:\\Users\\Κωστας\\Desktop\\koynetas\\μεγαλη εργασια\\industries.xls")
+industries <- read_excel("C:\\Users\\...\\industries.xls")
 
 
 # malmquist productivity France
@@ -235,7 +234,7 @@ cat("\014")
 
 options(scipen = 999) # avoid scientific notation in R
 
-industries <- read_excel("C:\\Users\\Κωστας\\Desktop\\koynetas\\μεγαλη εργασια\\industries.xls")
+industries <- read_excel("C:\\Users\\......\\industries.xls")
 
 # with time-invariant efficiencies -> industry effects
 
