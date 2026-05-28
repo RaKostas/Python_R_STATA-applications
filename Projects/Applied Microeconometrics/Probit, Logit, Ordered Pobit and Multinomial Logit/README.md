@@ -158,20 +158,7 @@ The model estimates marginal effects for each wage bracket. Key patterns:
 - **Hours worked:** Each additional hour per week increases the probability of higher wages significantly
 - **Economic sector:** Agriculture (base) workers are comparatively more likely to earn above €1,000 than workers in most other sectors, reflecting sector-specific collective bargaining agreements
 
----
-
-## Key Skills Demonstrated
-
-- **Discrete choice modelling:** Probit, Logit, Multinomial Logit, Ordered Probit
-- **Marginal effects:** Computing and interpreting `margins, dydx(*)` in Stata for non-linear models
-- **Model selection:** Justifying when OLS, Probit/Logit, Multinomial Logit, or Ordered Probit is appropriate
-- **Complex variable construction:** Recoding, destringing, generating interaction-ready categorical variables from raw survey data
-- **Real survey microdata:** Working with ELSTAT's Labour Force Survey — a large, messy, real-world dataset
-- **Publication-quality output:** `outreg2` and `esttab` for Word/LaTeX regression tables
-- **Gender wage analysis:** Interpreting sex-disaggregated descriptive statistics and regression outputs
-
----
-
+--
 
 
 ## License
