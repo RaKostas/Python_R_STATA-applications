@@ -1,6 +1,5 @@
 # Data Envelopment Analysis — Country Technical Efficiency (2014)
-> Master of Science in Applied Economics and Data Analysis
-**Supervisor:** Professor Kounetas Konstantinos
+
 
 ---
 
