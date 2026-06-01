@@ -101,7 +101,7 @@ The tables below show the **mean efficiency scores** across 2005–2011 per indu
 
 The script produces three **kernel density plots** — one for TE_CRS, one for TE_VRS, and one for Scale Efficiency — showing the distribution of scores across all industries and years combined for the three countries:
 
-![Figure 1 — Density Plots of Efficiency](assets/plots/fig1_density_efficiency.png)
+![Figure 1 — Density Plots of Efficiency](images/fig1_density_efficiency.png)
 
 The CRS and VRS density curves show a bimodal distribution — a cluster of lower-efficiency industries around 0.5–0.6 and a second peak near 1.0. The Scale Efficiency plot shows a sharp spike at 1.0, confirming that most industries operate close to their optimal scale even when their technical efficiency is lower.
 
@@ -182,7 +182,7 @@ A value **> 1 = improvement**, **< 1 = deterioration**, **= 1 = no change**. Thi
 
 The script produces histogram panels for each country showing the distribution of the Malmquist index across the 14 industries:
 
-![Figure 2 — Malmquist Index For Each Country](assets/plots/fig2_malmquist.png)
+![Figure 2 — Malmquist Index For Each Country](images/fig2_malmquist.png)
 
 > **France** (mean MPI = 1.006): Most industries improved. Coke had the largest gain (+42%). Basic Metals deteriorated the most (MPI = 0.79).  
 > **Germany** (mean MPI = 1.15): Strongest overall growth (+15%). Transport leads at MPI = 1.60, driven by a +76% technology advance. Coke collapsed (MPI = 0.50) due to severe efficiency loss.  
@@ -266,11 +266,11 @@ The Translog model is selected in both countries (LR test p-value = 0). Efficien
 
 **Figure 3 — SFA Efficiency Density, France**
 
-![Figure 3 — Density Plot of Efficiency in France](assets/plots/fig3_sfa_france.png)
+![Figure 3 — Density Plot of Efficiency in France](images/fig3_sfa_france.png)
 
 **Figure 4 — SFA Efficiency Density, Germany**
 
-![Figure 4 — Density Plot of Efficiency in Germany](assets/plots/fig4_sfa_germany.png)
+![Figure 4 — Density Plot of Efficiency in Germany](images/fig4_sfa_germany.png)
 
 > The France density curve shows a **bimodal distribution** — a small cluster around 0.992–0.993 and the main mass centered around 0.994–0.996, indicating most industries are near-frontier but a few lag slightly.  
 > Germany's density shows a **tighter, single-peaked curve** at ~0.991, indicating more uniformly distributed (and slightly lower) efficiency scores across industries.  
