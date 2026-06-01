@@ -3,18 +3,12 @@
             Replication of Card & Krueger (1994)
   DATE:     January 2021
 
-  DESCRIPTION:
-  This script replicates the Differences-in-Differences (DiD) analysis of
-  Card & Krueger (1994) on the effect of New Jersey's 1992 minimum wage
-  increase ($4.25 → $5.05/hr) on fast-food employment, using Pennsylvania
-  as the control group.
-
   Two regression models are estimated:
     Model 1 — Basic DiD (treatment × post interaction only)
     Model 2 — DiD with restaurant chain fixed effects (BK, KFC, Roy Rogers)
  DATA:
   CardKrueger1994.dta — loaded directly from the Boston College public
-  repository. Internet connection required.
+  repository.
 ===========================================================================*/
 
 
