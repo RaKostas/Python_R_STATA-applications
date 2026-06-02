@@ -8,7 +8,7 @@ School of Economics and Business Administration, Department of Economics
 
 ## Overview
 
-This repository contains a comprehensive Big Data analysis project completed as part of the MSc program in Applied Economics and Data Analysis. The goal is to apply core machine learning and data mining algorithms to real-world datasets, evaluate their performance, and draw meaningful conclusions.
+This repository contains a Big Data analysis project wher the goal is to apply core machine learning and data mining algorithms to real-world datasets, evaluate their performance, and draw meaningful conclusions.
 
 Every analysis in this project is implemented **twice** — once in **R** and once in **Python** — to validate results across different algorithmic implementations and demonstrate cross-language proficiency.
 
