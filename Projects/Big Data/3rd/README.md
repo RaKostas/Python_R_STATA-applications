@@ -1,7 +1,6 @@
 # Big Data Mining: Classification, Clustering & Association Rules in R and Python
 
 **MSc in Applied Economics and Data Analysis**  
-School of Economics and Business Administration, Department of Economics  
 *Supervisor: Prof. Tzagarakis Manolis*
 
 ---
