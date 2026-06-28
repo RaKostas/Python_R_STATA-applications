@@ -21,7 +21,7 @@ The goal is to quantify how **education** and **work experience** affect individ
 | File | Description |
 |------|-------------|
 | `mincer_earnings.do` | Full Stata script: data preparation, visualisations, three OLS regression models, and diagnostic plots |
-| `report.pdf` | Full written report with theoretical background, regression tables, and interpretation of results |
+
 
 > **Dataset:** Cross-sectional microeconomic data from 1975 (women aged 30–54). Source: university e-class platform. Not included in this repository due to data access restrictions — contact the course instructor for access.
 
