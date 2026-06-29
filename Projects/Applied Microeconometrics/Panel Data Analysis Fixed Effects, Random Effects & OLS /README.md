@@ -130,7 +130,6 @@ The same FE and RE models are re-run on the **19 Eurozone countries** — a homo
 | File | Description |
 |------|-------------|
 | `tfr_lfpr_panel_analysis.do` | Full Stata script — data retrieval, variable construction, OLS Models 1–6, FE, RE, Eurozone subsample |
-| `report.pdf` | Written report with full regression tables and interpretation |
 
 ---
 
@@ -140,9 +139,7 @@ The same FE and RE models are re-run on the **19 Eurozone countries** — a homo
 
 ---
 
-## Author
 
-Rampavilas Konstantinos — AM 1088687
 
 ---
 
